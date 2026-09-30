@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="data:,">
+<title>ご注文・お問い合わせ｜あやめ</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Hiragino Sans","Yu Gothic UI","Meiryo",sans-serif;color:#33454f;background:#fbf6f5;line-height:1.7;font-size:15px;padding:0 16px 48px}
+.wrap{max-width:560px;margin:0 auto}
+header{padding:28px 0 14px;text-align:center}
+header h1{font-size:21px;letter-spacing:.04em}
+header p{font-size:13px;color:#6b5f5d;margin-top:8px}
+form,.msg{background:#fff;border-radius:14px;padding:18px 16px;margin-top:12px;box-shadow:0 2px 8px rgba(100,80,80,.08)}
+.field{margin-bottom:18px}
+.field>label,.field .label{display:block;font-weight:700;margin-bottom:6px}
+.req,.opt{display:inline-block;margin-left:6px;padding:0 7px;border-radius:99px;font-size:11px;line-height:19px;vertical-align:2px;font-weight:400}
+.req{background:#b58079;color:#fff}
+.opt{background:#f1e6e4;color:#8a6c67}
+input[type=text],textarea,select{width:100%;padding:12px;font-size:16px;line-height:1.5;font-family:inherit;color:#33454f;background:#fff;border:1px solid #e6d8d5;border-radius:10px}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus,select:focus{outline:none;border-color:#b58079;box-shadow:0 0 0 3px rgba(181,128,121,.18)}
+.hint{font-size:12.5px;color:#7a6e6c;margin-top:4px}
+.err{font-size:13px;color:#b2475e;margin-top:4px}
+.bad input,.bad textarea,.bad select{border-color:#b2475e}
+.grp{font-size:12px;font-weight:700;color:#b58079;margin:10px 0 4px}
+.prod{display:flex;align-items:center;gap:10px;padding:8px 0;border-top:1px solid #f3eae8}
+.prod label{flex:1;min-width:0;font-weight:400;margin:0}
+.pn{display:block;font-size:14px;line-height:1.45}
+.pv{display:block;font-size:12px;color:#7a6e6c}
+.prod select{flex:0 0 76px;width:76px;padding:8px 6px;text-align:center}
+.privacy{font-size:12.5px;color:#6b5f5d;background:#f8eeec;border-radius:10px;padding:12px 14px;margin-bottom:10px}
+.field>label.consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;cursor:pointer}
+.consent input{width:20px;height:20px;margin-top:3px;accent-color:#b58079;flex:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+button{display:block;width:100%;padding:15px;border:0;border-radius:99px;background:#b58079;color:#fff;font-size:17px;font-weight:700;line-height:1;font-family:inherit;letter-spacing:.1em;cursor:pointer}
+button:disabled{opacity:.5;cursor:not-allowed}
+.msg h2{font-size:17px;margin-bottom:6px}
+.msg p+p{margin-top:6px}
+.ng{background:#fbeef1;color:#b2475e}
+.box{background:#f8eeec;border-radius:14px;padding:14px 16px;margin-top:16px;font-size:13px}
+.box p+p{margin-top:6px}
+footer{margin-top:20px;font-size:12px;color:#7a6e6c;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <h1>ご注文・お問い合わせ</h1>
+  <p>内容を確かめて、あやめからご連絡します。<br>お返事まで、少しお時間をいただくことがあります。</p>
+</header>
+<main>
+<form id="f" novalidate>
+  <div class="field" data-k="name">
+    <label for="name">お名前<span class="req">必須</span></label>
+    <input id="name" type="text" autocomplete="name" maxlength="50" placeholder="例）なかざと あやめ">
+    <p class="err" hidden></p>
+  </div>
+  <div class="field" data-k="contact">
+    <label for="contact">ご連絡先<span class="req">必須</span></label>
+    <input id="contact" type="text" autocomplete="email" maxlength="100" placeholder="メールアドレスか電話番号">
+    <p class="hint">メールアドレスか電話番号の、どちらか1つをご入力ください。</p>
+    <p class="err" hidden></p>
+  </div>
+  <div class="field" data-k="inquiry">
+    <label for="inquiry">お問い合わせ内容<span class="opt">任意</span></label>
+    <textarea id="inquiry" maxlength="2000" placeholder="ご質問やご相談をご自由にお書きください"></textarea>
+    <p class="err" hidden></p>
+  </div>
+  <div class="field" data-k="products">
+    <span class="label">購入希望の商品<span class="opt">任意</span></span>
+    <p class="hint">ご希望の商品の数を選んでください（1回に10個まで）。</p>
+    <p class="grp">食品</p>
+<div class="prod">
+  <label for="q-drink"><span class="pn">オートファジードリンク　ザ・ジオ</span><span class="pv">720ml　25,920円（税込）</span></label>
+  <select id="q-drink" data-id="drink" aria-label="オートファジードリンク　ザ・ジオの数量"><option value="0">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+</div>
+<div class="prod">
+  <label for="q-capsule"><span class="pn">オートファジーカプセル　ザ・ジオ</span><span class="pv">14.22g（158mg×90カプセル）　25,920円（税込）</span></label>
+  <select id="q-capsule" data-id="capsule" aria-label="オートファジーカプセル　ザ・ジオの数量"><option value="0">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+</div>
+<div class="prod">
+  <label for="q-diobrain"><span class="pn">ジオブレイン</span><span class="pv">29.76g（248mg×120カプセル）　18,360円（税込）</span></label>
+  <select id="q-diobrain" data-id="diobrain" aria-label="ジオブレインの数量"><option value="0">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+</div>
+<div class="prod">
+  <label for="q-diopowder"><span class="pn">ジオ・パウダー</span><span class="pv">90.0g　18,360円（税込）</span></label>
+  <select id="q-diopowder" data-id="diopowder" aria-label="ジオ・パウダーの数量"><option value="0">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+</div>
+<p class="grp">化粧品</p>
+<div class="prod">
+  <label for="q-oil"><span class="pn">ドゥ ソワン　トリートメントオイル</span><span class="pv">30mL　9,900円（税込）</span></label>
+  <select id="q-oil" data-id="oil" aria-label="ドゥ ソワン　トリートメントオイルの数量"><option value="0">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+</div>
+<div class="prod">
+  <label for="q-soleil"><span class="pn">ドゥ・ソレイユ [日やけ止めクリーム]</span><span class="pv">40g　5,280円（税込）</span></label>
+  <select id="q-soleil" data-id="soleil" aria-label="ドゥ・ソレイユ [日やけ止めクリーム]の数量"><option value="0">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+</div>
+<div class="prod">
+  <label for="q-glow"><span class="pn">グレーヌ・ポー　グロウ セラム</span><span class="pv">40ml　23,100円（税込）</span></label>
+  <select id="q-glow" data-id="glow" aria-label="グレーヌ・ポー　グロウ セラムの数量"><option value="0">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+</div>
+<div class="prod">
+  <label for="q-repair"><span class="pn">グレーヌ・ポー　リペア クリーム</span><span class="pv">30g　※スパチュラ付　17,600円（税込）</span></label>
+  <select id="q-repair" data-id="repair" aria-label="グレーヌ・ポー　リペア クリームの数量"><option value="0">—</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select>
+</div>
+    <p class="err" hidden></p>
+  </div>
+  <div class="field" data-k="other">
+    <label for="other">その他<span class="opt">任意</span></label>
+    <textarea id="other" maxlength="1000" placeholder="ご連絡のつきやすい時間帯など"></textarea>
+    <p class="err" hidden></p>
+  </div>
+  <div class="hp" aria-hidden="true"><label>website<input id="website" tabindex="-1" autocomplete="off"></label></div>
+  <div class="privacy" id="privacy">お預かりするお名前・ご連絡先・ご記入の内容は、このお問い合わせへのお返事と、ご注文の手配のご連絡にだけ使います。ほかの目的には使わず、第三者へお渡しすることもありません。消してほしいときは、公式LINE「あやめ」のトークでお知らせください。</div>
+  <div class="field" data-k="consent">
+    <label class="consent"><input type="checkbox" id="consent" aria-describedby="privacy">上記に同意して送信します</label>
+    <p class="err" hidden></p>
+  </div>
+  <button id="send" type="submit">送信する</button>
+</form>
+<div class="msg" id="m-ok" hidden role="status">
+  <h2>送信しました</h2>
+  <p>ありがとうございます。内容を確かめて、ご入力のご連絡先へ、あやめからご連絡します。</p>
+  <p>このページを閉じると、公式LINEのトークに戻ります。</p>
+</div>
+<div class="msg ng" id="m-ng" hidden role="alert">送信できませんでした。通信の状態をご確認のうえ、もう一度お試しください。</div>
+<div class="msg ng" id="m-busy" hidden role="alert">ただいま送信が混み合っています。少し時間をおいて、もう一度お試しください。</div>
+<div class="msg" id="m-dev" hidden>（表示の確認中です。送信先がまだ設定されていないため、送信はしていません）</div>
+<div class="box">
+  <p>このフォームを送っただけでは、ご注文は確定しません。お届け・お支払いの方法は、ご連絡のときにご案内します。</p>
+</div>
+</main>
+<footer><p>公式LINE「あやめ」</p></footer>
+</div>
+<script>
+(function () {
+  'use strict';
+  /* GAS ウェブアプリの URL（build.py が gas_url.txt から差し込む）。【】が残っているあいだは送信しない */
+  var GAS_URL = 'https://script.google.com/macros/s/AKfycbxWYR90yqcuQtqm1xuIBaC2h6Z6xkZ1msAjhhukKn-kGopWXEcRtECmaq4hXWXfCcKP/exec';
+  var READY = GAS_URL.indexOf('【') < 0;
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('f'), send = $('send');
+  var mailRe = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[a-z]{2,}$/i;
+  function phoneOk(s) {
+    var d = s.replace(/[０-９＋]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); })   /* 全角の数字と＋ */
+             .replace(/[\s()（）\-‐－ー]/g, '');
+    return /^\+?\d{10,15}$/.test(d);
+  }
+  function setErr(k, t) {
+    var box = form.querySelector('.field[data-k="' + k + '"]'), p = box.querySelector('.err');
+    box.classList.toggle('bad', !!t); p.textContent = t || ''; p.hidden = !t;
+  }
+  function values() {
+    var items = [];
+    form.querySelectorAll('select[data-id]').forEach(function (s) { var n = +s.value; if (n > 0) items.push({ id: s.getAttribute('data-id'), qty: n }); });
+    return {
+      name: $('name').value.replace(/\s+/g, ' ').trim(),
+      contact: $('contact').value.trim(),
+      inquiry: $('inquiry').value.trim(),
+      products: items,
+      other: $('other').value.trim(),
+      consent: $('consent').checked,
+      website: $('website').value
+    };
+  }
+  function check(v) {
+    setErr('name', v.name ? '' : 'お名前をご入力ください。');
+    setErr('contact', mailRe.test(v.contact) || phoneOk(v.contact) ? '' : 'メールアドレスか電話番号の形をご確認ください。');
+    setErr('inquiry', v.inquiry || v.products.length ? '' : 'お問い合わせ内容をお書きいただくか、購入希望の商品をお選びください。');
+    setErr('consent', v.consent ? '' : '内容をご確認のうえ、チェックを入れてください。');
+    return !form.querySelector('.field.bad');
+  }
+  function show(id) { ['m-ok', 'm-ng', 'm-busy', 'm-dev'].forEach(function (x) { $(x).hidden = x !== id; }); }
+  var SERVER_ERR = { name: 'お名前をご確認ください。', contact: 'ご連絡先をご確認ください。', empty: 'お問い合わせ内容か商品をお選びください。', consent: '同意のチェックをご確認ください。' };
+  var SERVER_KEY = { name: 'name', contact: 'contact', empty: 'inquiry', consent: 'consent' };
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault(); show(null);
+    var v = values();
+    if (!check(v)) { var first = form.querySelector('.field.bad input, .field.bad textarea'); if (first) first.focus(); return; }
+    if (!READY) { show('m-dev'); return; }
+    send.disabled = true; send.textContent = '送信しています…';
+    fetch(GAS_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },   /* プリフライトを起こさない */
+      body: JSON.stringify(v)
+    }).then(function (r) { return r.json(); }).then(function (r) {
+      if (r && r.ok) { form.hidden = true; show('m-ok'); $('m-ok').scrollIntoView({ block: 'center' }); return; }
+      if (r && r.error === 'busy') show('m-busy');
+      else if (r && SERVER_KEY[r.error]) setErr(SERVER_KEY[r.error], SERVER_ERR[r.error]);
+      else show('m-ng');
+      send.disabled = false; send.textContent = '送信する';
+    }).catch(function () { show('m-ng'); send.disabled = false; send.textContent = '送信する'; });
+  });
+})();
+</script>
+</body>
+</html>
