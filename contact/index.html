@@ -113,6 +113,19 @@ footer{margin-top:20px;font-size:12px;color:#7a6e6c;text-align:center}
     <textarea id="other" maxlength="1000" placeholder="ご連絡のつきやすい時間帯など"></textarea>
     <p class="err" hidden></p>
   </div>
+  <div class="field" data-k="heard">
+    <label for="heard">このフォームを知ったきっかけ<span class="opt">任意</span></label>
+    <select id="heard">
+      <option value="">—</option>
+      <option value="line">公式LINE</option>
+      <option value="fb">Facebook</option>
+      <option value="note">note</option>
+      <option value="seminar">セミナー</option>
+      <option value="intro">ご紹介</option>
+      <option value="other">その他</option>
+    </select>
+    <p class="err" hidden></p>
+  </div>
   <div class="hp" aria-hidden="true"><label>website<input id="website" tabindex="-1" autocomplete="off"></label></div>
   <div class="privacy" id="privacy">お預かりするお名前・ご連絡先・ご記入の内容は、このお問い合わせへのお返事と、ご注文の手配のご連絡にだけ使います。ほかの目的には使わず、第三者へお渡しすることもありません。消してほしいときは、公式LINE「仲里彩瞳」のトークでお知らせください。</div>
   <div class="field" data-k="consent">
@@ -143,6 +156,11 @@ footer{margin-top:20px;font-size:12px;color:#7a6e6c;text-align:center}
   var READY = GAS_URL.indexOf('【') < 0;
   var $ = function (id) { return document.getElementById(id); };
   var form = $('f'), send = $('send');
+  /* どこから開いたか（2026-10-06）。経路ごとの URL に ?src=line / fb / note / seminar を付けて配る。きっかけの欄も同じ値で選んでおく（変えられる） */
+  var SRC_OK = { line: 1, fb: 1, note: 1, seminar: 1, intro: 1, other: 1 };
+  var src = (location.search.match(/[?&]src=([a-z]+)/) || [])[1] || '';
+  if (!SRC_OK[src]) src = '';
+  if (src) $('heard').value = src;
   var mailRe = /^[^\s@<>()",;:]+@[^\s@<>()",;:]+\.[a-z]{2,}$/i;
   function phoneOk(s) {
     var d = s.replace(/[０-９＋]/g, function (c) { return String.fromCharCode(c.charCodeAt(0) - 0xFEE0); })   /* 全角の数字と＋ */
@@ -163,6 +181,8 @@ footer{margin-top:20px;font-size:12px;color:#7a6e6c;text-align:center}
       products: items,
       other: $('other').value.trim(),
       consent: $('consent').checked,
+      src: src,
+      heard: $('heard').value,
       website: $('website').value
     };
   }
