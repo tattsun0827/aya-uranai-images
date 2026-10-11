@@ -84,7 +84,7 @@ footer{margin-top:20px;font-size:12px;color:#7a6e6c;text-align:center}
     <p class="err" hidden></p>
   </div>
   <div class="field" data-k="heard">
-    <label for="heard">このフォームを知ったきっかけ<span class="opt">任意</span></label>
+    <label for="heard">このフォームを知ったきっかけ<span class="req">必須</span></label>
     <select id="heard">
       <option value="">—</option>
       <option value="line">公式LINE</option>
@@ -156,6 +156,7 @@ footer{margin-top:20px;font-size:12px;color:#7a6e6c;text-align:center}
     setErr('name', v.name ? '' : 'お名前をご入力ください。');
     setErr('contact', mailRe.test(v.contact) || phoneOk(v.contact) ? '' : 'メールアドレスか電話番号の形をご確認ください。');
     setErr('inquiry', v.inquiry || v.products.length ? '' : 'お問い合わせ内容をお書きください。');
+    setErr('heard', v.heard ? '' : 'このフォームを知ったきっかけをお選びください。');
     setErr('consent', v.consent ? '' : '内容をご確認のうえ、チェックを入れてください。');
     return !form.querySelector('.field.bad');
   }
@@ -165,7 +166,7 @@ footer{margin-top:20px;font-size:12px;color:#7a6e6c;text-align:center}
   form.addEventListener('submit', function (ev) {
     ev.preventDefault(); show(null);
     var v = values();
-    if (!check(v)) { var first = form.querySelector('.field.bad input, .field.bad textarea'); if (first) first.focus(); return; }
+    if (!check(v)) { var first = form.querySelector('.field.bad input, .field.bad textarea, .field.bad select'); if (first) first.focus(); return; }
     if (!READY) { show('m-dev'); return; }
     send.disabled = true; send.textContent = '送信しています…';
     fetch(GAS_URL, {
