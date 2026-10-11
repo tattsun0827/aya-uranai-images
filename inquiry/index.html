@@ -70,7 +70,7 @@ footer{margin-top:20px;font-size:12px;color:#7a6e6c;text-align:center}
     <p class="err" hidden></p>
   </div>
   <div class="field" data-k="age">
-    <label for="age">年代<span class="opt">任意</span></label>
+    <label for="age">年代<span class="req">必須</span></label>
     <select id="age">
       <option value="">—</option>
       <option value="a10">10代</option>
@@ -149,6 +149,7 @@ footer{margin-top:20px;font-size:12px;color:#7a6e6c;text-align:center}
       src: src,
       heard: $('heard').value,
       age: $('age').value,
+      form: 'inquiry',
       website: $('website').value
     };
   }
@@ -156,13 +157,14 @@ footer{margin-top:20px;font-size:12px;color:#7a6e6c;text-align:center}
     setErr('name', v.name ? '' : 'お名前をご入力ください。');
     setErr('contact', mailRe.test(v.contact) || phoneOk(v.contact) ? '' : 'メールアドレスか電話番号の形をご確認ください。');
     setErr('inquiry', v.inquiry || v.products.length ? '' : 'お問い合わせ内容をお書きください。');
+    setErr('age', v.age ? '' : '年代をお選びください。');
     setErr('heard', v.heard ? '' : 'このフォームを知ったきっかけをお選びください。');
     setErr('consent', v.consent ? '' : '内容をご確認のうえ、チェックを入れてください。');
     return !form.querySelector('.field.bad');
   }
   function show(id) { ['m-ok', 'm-ng', 'm-busy', 'm-dev'].forEach(function (x) { $(x).hidden = x !== id; }); }
-  var SERVER_ERR = { name: 'お名前をご確認ください。', contact: 'ご連絡先をご確認ください。', empty: 'お問い合わせ内容をお書きください。', consent: '同意のチェックをご確認ください。' };
-  var SERVER_KEY = { name: 'name', contact: 'contact', empty: 'inquiry', consent: 'consent' };
+  var SERVER_ERR = { name: 'お名前をご確認ください。', contact: 'ご連絡先をご確認ください。', empty: 'お問い合わせ内容をお書きください。', consent: '同意のチェックをご確認ください。', age: '年代をお選びください。', heard: 'このフォームを知ったきっかけをお選びください。' };
+  var SERVER_KEY = { name: 'name', contact: 'contact', empty: 'inquiry', consent: 'consent', age: 'age', heard: 'heard' };
   form.addEventListener('submit', function (ev) {
     ev.preventDefault(); show(null);
     var v = values();
